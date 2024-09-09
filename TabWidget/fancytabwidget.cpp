@@ -63,14 +63,15 @@ static void initStyleBaseOption(QStyleOptionTabBarBase *optTabBase,
 }
 } // namespace
 
-FancyTabWidget::FancyTabWidget(QWidget *parent) : QTabWidget{parent} {
+FancyTabWidget::FancyTabWidget(QWidget *parent, const QIcon &addButtonIcon)
+    : QTabWidget{parent} {
 
   setStyle(new FancyTabStyle(this));
 
   int addButtonSize = tabBar()->height() - 4;
 
-  AddTabButton *addButton = new AddTabButton(addButtonSize, addButtonSize,
-                                             QIcon(":add-box-fill.png"), this);
+  AddTabButton *addButton =
+      new AddTabButton(addButtonSize, addButtonSize, addButtonIcon, this);
 
   connect(addButton, &AddTabButton::clicked, this,
           &FancyTabWidget::addTabButtonClicked);

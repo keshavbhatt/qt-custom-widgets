@@ -24,11 +24,11 @@
 class FancyTabWidget : public QTabWidget {
   Q_OBJECT
 public:
-  explicit FancyTabWidget(QWidget *parent = nullptr);
+  explicit FancyTabWidget(QWidget *parent = nullptr,
+                          const QIcon &addButtonIcon = QIcon());
 
 signals:
   void tabAddRequested();
-  // void tabTextChanged(int index, const QString &text);
 
 protected slots:
   void addTabButtonClicked(bool checked);
